@@ -177,6 +177,101 @@
   border: 1px solid var(--line);
   box-shadow: 0 18px 45px rgb(0 72 112 / 0.08);
 }
+.permission-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.permission-guide {
+  position: relative;
+}
+.permission-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 0;
+  background: transparent;
+  color: var(--bitrix-deep);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 650;
+  padding: 0;
+}
+.permission-trigger:hover,
+.permission-trigger:focus-visible {
+  color: var(--bitrix-blue);
+}
+.permission-popover {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: min(19rem, calc(100vw - 3rem));
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem;
+  box-shadow: 0 16px 35px rgb(0 72 112 / 0.16);
+}
+.permission-guide:hover .permission-popover,
+.permission-guide:focus-within .permission-popover {
+  display: block;
+}
+.permission-popover::before {
+  position: absolute;
+  top: -0.35rem;
+  right: 1.25rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--surface);
+  content: "";
+  transform: rotate(45deg);
+}
+.permission-title {
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.permission-copy {
+  margin-top: 0.35rem;
+  color: var(--muted-ink);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+.permission-list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+}
+.permission-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+.permission-check {
+  color: var(--bitrix-deep);
+  font-family: ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding-top: 0.1rem;
+}
+.permission-list strong,
+.permission-list small {
+  display: block;
+}
+.permission-list strong {
+  color: var(--ink);
+  font-size: 0.75rem;
+}
+.permission-list small {
+  margin-top: 0.1rem;
+  color: var(--muted-ink);
+  font-family: ui-monospace, monospace;
+  font-size: 0.65rem;
+}
 .process-rail {
   border-left: 1px solid rgb(0 102 161 / 0.16);
   padding: 0.5rem 0 0.5rem 1.25rem;

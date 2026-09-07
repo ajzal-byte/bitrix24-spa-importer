@@ -1,8 +1,10 @@
+// TODO: add feature to rename the SPA on the target CRM during migration and select only necessary fields to migrate
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
   CircleAlert,
+  Info,
   Loader2,
   RefreshCw,
   ShieldCheck,
@@ -204,7 +206,8 @@ function App() {
             <CardHeader>
               <CardTitle>Connect both portals</CardTitle>
               <CardDescription>
-                Add an incoming webhook from each portal. Credentials are not stored.
+                Add an incoming webhook from each portal. Credentials are not
+                stored.
               </CardDescription>
             </CardHeader>
 
@@ -222,7 +225,10 @@ function App() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="target-webhook">Target CRM webhook</Label>
+                <div className="permission-label-row">
+                  <Label htmlFor="target-webhook">Target CRM webhook</Label>
+                  <PermissionGuide />
+                </div>
                 <Input
                   id="target-webhook"
                   placeholder="http(s)://portal.example.com/rest/1/xxxxxxxx/"
@@ -400,6 +406,40 @@ function App() {
             </ol>
           </aside>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function PermissionGuide() {
+  return (
+    <div className="permission-guide">
+      <button type="button" className="permission-trigger">
+        <Info className="size-3.5" />
+        Required access
+      </button>
+      <div className="permission-popover">
+        <p className="permission-title">Target webhook permissions</p>
+        <p className="permission-copy">
+          When creating the target webhook, enable these scopes so the importer
+          can create the SPA and its custom fields:
+        </p>
+        <ul className="permission-list">
+          <li>
+            <span className="permission-check">01</span>
+            <span>
+              <strong>CRM</strong>
+              <small>API scope: crm</small>
+            </span>
+          </li>
+          <li>
+            <span className="permission-check">02</span>
+            <span>
+              <strong>Custom fields settings</strong>
+              <small>API scope: userfieldconfig</small>
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
   );
