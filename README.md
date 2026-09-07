@@ -1,32 +1,57 @@
-# React + TypeScript + Vite
+# SPA Importer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A local web app for migrating Bitrix24 smart processes (SPAs) from one portal to another. It recreates the SPA configuration and custom fields in the target CRM using incoming webhooks.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Connect a **source** and **target** Bitrix24 portal via incoming webhooks
+2. Load and select a smart process from the source portal
+3. Migrate it to the target portal, including:
+   - SPA type settings
+   - Workplace (if the SPA belongs to one)
+   - Custom fields
 
-## React Compiler
+Webhook URLs are used only in your browser session and are not stored.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Prerequisites
 
-## Expanding the Oxlint configuration
+- Node.js 18+
+- Incoming webhooks on both Bitrix24 portals with CRM permissions
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Webhook URL format:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+https://your-portal.bitrix24.com/rest/1/xxxxxxxx/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Getting started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the dev server:
+
+```bash
+npm run dev
+```
+
+Open the URL shown in the terminal (usually `http://localhost:5173`).
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run Oxlint |
+
+## Tech stack
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- Bitrix24 REST API
