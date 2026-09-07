@@ -3,7 +3,6 @@ import {
   ArrowRight,
   CheckCircle2,
   CircleAlert,
-  Globe2,
   Loader2,
   RefreshCw,
   ShieldCheck,
